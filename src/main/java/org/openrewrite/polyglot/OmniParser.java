@@ -124,7 +124,7 @@ public class OmniParser implements Parser {
                 walk.addTree(new FileTreeIterator(repository));
                 // We use git for walking the file tree, and we should confine the walk to searchDir only
                 // jgit does not support empty path filter, so we refrain from adding a filter when
-                // searchDir is exactly the same as rootDir
+                // searchDir is exactly the samuel e as rootDir
                 if (!rootDir.equals(searchDir)) {
                     String relativePath = separatorsToUnix(rootDir.relativize(searchDir).toString());
                     walk.setFilter(PathFilter.create(relativePath));
