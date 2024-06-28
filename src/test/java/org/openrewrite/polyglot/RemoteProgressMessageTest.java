@@ -26,10 +26,12 @@ class RemoteProgressMessageTest {
 
     @Test
     void multipartExtraMessage() {
-        String itsALongStory = "this is some pretty long text that will exceed the " +
-                               "maximum single-packet message length and will therefore require " +
-                               "splitting into multiple packets which may arrive in any order or" +
-                               "even not at all potentially";
+        String itsALongStory = """
+                               this is some pretty long text that will exceed the \
+                               maximum single-packet message length and will therefore require \
+                               splitting into multiple packets which may arrive in any order or\
+                               even not at all potentially\
+                               """;
 
         List<byte[]> packets = RemoteProgressMessage.toPackets(
           SetExtraMessage, itsALongStory);
