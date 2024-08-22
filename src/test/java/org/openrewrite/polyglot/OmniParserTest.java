@@ -24,7 +24,6 @@ import org.openrewrite.jgit.transport.URIish;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static java.nio.file.Files.writeString;
@@ -37,7 +36,7 @@ class OmniParserTest {
     @Test
     void isExcluded(@TempDir Path root) {
         OmniParser parser = OmniParser.builder(OmniParser.defaultResourceParsers())
-          .exclusions(List.of(Paths.get("pom.xml")))
+          .exclusions(List.of(Path.of("pom.xml")))
           .build();
         assertThat(parser.isExcluded(root.resolve("pom.xml"), root)).isTrue();
     }
@@ -72,7 +71,7 @@ class OmniParserTest {
         }
 
         OmniParser parser = OmniParser.builder(OmniParser.defaultResourceParsers())
-          .exclusions(List.of(Paths.get("pom.xml")))
+          .exclusions(List.of(Path.of("pom.xml")))
           .build();
 
         List<Path> paths = parser.acceptedPaths(repo);
@@ -110,8 +109,8 @@ class OmniParserTest {
           .toList();
 
         assertThat(paths)
-          .contains(Paths.get("project/build.gradle"))
-          .doesNotContain(Paths.get("project/.gradle/foo.yml"));
+          .contains(Path.of("project/build.gradle"))
+          .doesNotContain(Path.of("project/.gradle/foo.yml"));
     }
 
     void initGit(Path repositoryPath) {

@@ -226,7 +226,7 @@ public class OmniParser implements Parser {
 
     @Override
     public Path sourcePathFromSourceText(Path prefix, String sourceCode) {
-        return Paths.get("resource.me");
+        return Path.of("resource.me");
     }
 
     private boolean isWithinSizeThreshold(long fileSize) {

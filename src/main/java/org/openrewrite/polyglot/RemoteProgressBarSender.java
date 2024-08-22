@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.*;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 
 public class RemoteProgressBarSender implements ProgressBar {
     private DatagramSocket socket;
@@ -34,7 +34,7 @@ public class RemoteProgressBarSender implements ProgressBar {
     }
 
     public RemoteProgressBarSender(@Nullable InetAddress address, int port) {
-        String localhost = Files.exists(Paths.get("/.dockerenv")) ?
+        String localhost = Files.exists(Path.of("/.dockerenv")) ?
                 "host.docker.internal" :
                 "localhost";
         try {
